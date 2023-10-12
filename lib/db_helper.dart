@@ -70,6 +70,20 @@ Future<List<Map<String,dynamic>>> queryAll() async {
     }
 }
 
+  Future<List<Map<String,dynamic>>> query(int id) async {
+    Database? db = await instance.database;
+    if(db!=null){
+      return await db.query(_tablename,where: '$Colid = ?',whereArgs: [id]);
+    }
+    else{
+      return [{
+        Colid: 0,
+        Colname : 'No Data',
+        Colage: 0
+      }];
+    }
+  }
+
   Future<int> update(Map<String,dynamic> row) async {
     Database? db = await instance.database;
     if(db!=null){

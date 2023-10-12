@@ -27,6 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ),
             TextButton(onPressed: ()async{
+              List<Map<String,dynamic>> queryRows = await DatabaseHelper.instance.query(4 );
+              debugPrint(queryRows.toString());
+
+            },
+              child: const Text('Query Specific'),
+
+            ),
+            TextButton(onPressed: ()async{
                List<Map<String,dynamic>> queryRows = await DatabaseHelper.instance.queryAll();
                debugPrint(queryRows.toString());
 
